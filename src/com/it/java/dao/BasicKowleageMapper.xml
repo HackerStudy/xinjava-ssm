@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql -->
+<mapper namespace="com.it.java.dao.BasicKowleageMapper">
+	<!-- parameterType指定输入参数
+		 resultType指定返回类型
+		 一对一映射时用reseltMap
+	 -->
+	
+	<select id="FindAll" resultType="BasicKowleage">
+		select * from basickowleage
+	</select>
+	
+	<select id="FindAlltest" parameterType="Int" resultType="BasicKowleage">
+		select * from basickowleage where unit_id = #{V}
+	</select>
+	
+	<update id="UpdateAttachment" >
+		update basickowleage SET attachment = #{attachment} WHERE id =#{id}
+	</update>
+	
+	<select id="FindAttachment" parameterType="Int" resultType="String">
+		select attachment from basickowleage where id=#{id}
+	</select>
+	
+	<select id="FindHeadings" resultType="String">
+		select headings from basickowleage
+	</select>
+	
+	<select id="findAllid" parameterType="Int" resultType="BasicKowleage" >
+		select * from basickowleage where id=#{v}
+	</select>
+	
+	<insert id="InserIntoBasicKnowledge">
+	 	insert into 
+	 	basickowleage(headings,text)
+	 	values(#{subtitletext},#{content})
+	 </insert>
+	 
+	 <delete id="ModificationBasicKnowledgeId">
+	 	delete from basickowleage where id = #{v}
+	 </delete>
+	
+</mapper>

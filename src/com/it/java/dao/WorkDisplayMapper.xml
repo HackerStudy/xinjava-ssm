@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql -->
+<mapper namespace="com.it.java.dao.WorkDisplayMapper">
+	<!-- 通过ID查询一个用户
+		 一对一映射时用reseltMap
+	 -->
+	<insert id="add">
+		insert into workdisplay
+		values(null,#{title},#{userName},#{profile},#{picture},#{attachment})
+	</insert>
+	<select id="show" resultMap="workDisplayMap">
+		select * from workdisplay
+	</select>
+	<select id="find" resultMap="workDisplayMap">
+	    select * from workdisplay where id=#{id};
+	</select>
+	<resultMap type="workDisplay" id="workDisplayMap">
+		<id property="id" column="id" />
+		<result property="title" column="title" />
+		<result property="userName" column="userName" />
+		<result property="profile" column="profile" />
+		<result property="picture" column="picture" />
+		<result property="attachment" column="attachment" />
+	</resultMap>
+	
+</mapper>

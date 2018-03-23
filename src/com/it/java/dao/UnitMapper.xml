@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql -->
+<mapper namespace="com.it.java.dao.UnitMapper">
+	<!-- 通过ID查询一个用户
+		 一对一映射时用reseltMap
+	 -->
+	<!--  <resultMap type="com.it.java.dao.UnitMapper" id="UnitList">
+	 	<id column="id" property="id" jdbcType="INTEGER" />
+	 	<result column="name" property="name" jdbcType="VARCHAR"/>
+	 	<result column="module_id" property="module_id" jdbcType="INTEGER" />
+	 </resultMap>
+	  <sql id="Unit_List" >
+	    id,name,module_id
+	  </sql> -->
+	 
+	<select id="FindModuleId" parameterType="Int" resultType="Unit">
+		select 
+		*
+		from unit 
+		where module_id = #{V}
+	</select>
+	
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.java.dao.RelatedResourcesMapper">
+	<select id="findByUid" resultMap="findByUidMap">
+		select * from relatedresources where uid=#{uid}
+	</select>
+	<select id="findAll" resultMap="findByUidMap">
+		select * from relatedresources
+	</select>
+	<select id="findByType" resultMap="findByUidMap">
+	    select * from relatedresources where type=#{type};
+	</select>
+	<resultMap type="relatedResources" id="findByUidMap">
+		<id property="id" column="id" />
+		<result property="uid" column="uid" />
+		<result property="name" column="name" />
+		<result property="href" column="href" />
+		<result property="type" column="type" />
+	</resultMap>
+	<insert id="add">
+	     insert into relatedresources values(null,#{uid},#{name},#{href},#{type})
+	 </insert>
+	 <delete id="delete">
+	    delete from relatedresources where id=#{id}
+	 </delete>
+</mapper>
